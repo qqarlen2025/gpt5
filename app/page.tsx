@@ -323,7 +323,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 OpenAI. This is a demonstration website showcasing GPT-5 capabilities.</p>
+            <p>&copy; 2025 gpt5pro.org. This is a demonstration website showcasing GPT-5 capabilities.</p>
           </div>
         </div>
       </footer>
