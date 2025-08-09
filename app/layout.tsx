@@ -5,19 +5,19 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'GPT-5 - The Most Advanced AI Language Model | OpenAI',
-  description: 'Experience GPT-5, OpenAI\'s most advanced AI language model with unprecedented reasoning capabilities, faster response times, and enhanced safety features. Start chatting now.',
-  keywords: 'GPT-5, OpenAI, AI language model, artificial intelligence, chatbot, GPT5, advanced AI, machine learning, natural language processing',
+  title: 'GPT-5 Pro - Ultimate GPT-5 Resources, Tutorials & Tools Directory',
+  description: 'Discover the best GPT-5 resources, tutorials, plugins, and SAAS tools. Your ultimate guide to GPT-5 with expert blogs, comprehensive tutorials, and curated tool directory.',
+  keywords: 'GPT-5, GPT5, GPT-5 tutorials, GPT-5 plugins, GPT-5 tools, GPT-5 blog, AI tutorials, ChatGPT-5, GPT-5 resources, GPT-5 directory, AI tools, GPT-5 guide',
   openGraph: {
-    title: 'GPT-5 - The Most Advanced AI Language Model',
-    description: 'Experience GPT-5, OpenAI\'s most advanced AI language model with unprecedented reasoning capabilities and enhanced features.',
+    title: 'GPT-5 Pro - Ultimate GPT-5 Resources & Tools Directory',
+    description: 'Discover the best GPT-5 resources, tutorials, plugins, and SAAS tools. Your ultimate guide to GPT-5 with expert content.',
     type: 'website',
     url: 'https://gpt5pro.org',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GPT-5 - The Most Advanced AI Language Model',
-    description: 'Experience GPT-5, OpenAI\'s most advanced AI language model with unprecedented reasoning capabilities.',
+    title: 'GPT-5 Pro - Ultimate GPT-5 Resources & Tools Directory',
+    description: 'Discover the best GPT-5 resources, tutorials, plugins, and SAAS tools. Your ultimate guide to GPT-5.',
   },
 };
 

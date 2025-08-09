@@ -1,83 +1,89 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronDown, ArrowRight, Zap, Brain, Globe, Shield, MessageCircle, Cpu } from 'lucide-react';
+import { ChevronDown, ArrowRight, BookOpen, Puzzle, Wrench, Rocket, Star, TrendingUp } from 'lucide-react';
 
-const features = [
+const categories = [
   {
-    icon: <Brain className="w-8 h-8" />,
-    title: "Advanced Reasoning",
-    description: "GPT-5 demonstrates unprecedented reasoning capabilities with complex multi-step problem solving."
+    icon: <BookOpen className="w-8 h-8" />,
+    title: "GPT-5 Tutorials",
+    description: "Comprehensive guides and step-by-step tutorials to master GPT-5 features and capabilities.",
+    count: "50+ Tutorials"
   },
   {
-    icon: <Zap className="w-8 h-8" />,
-    title: "Lightning Fast",
-    description: "Experience faster response times with optimized architecture for real-time conversations."
+    icon: <Puzzle className="w-8 h-8" />,
+    title: "GPT-5 Plugins",
+    description: "Discover the best GPT-5 plugins to extend functionality and enhance your AI experience.",
+    count: "200+ Plugins"
   },
   {
-    icon: <Globe className="w-8 h-8" />,
-    title: "Multilingual Mastery",
-    description: "Enhanced support for 100+ languages with improved cultural context understanding."
+    icon: <Rocket className="w-8 h-8" />,
+    title: "GPT-5 SAAS Tools",
+    description: "Curated collection of GPT-5 powered SAAS applications for business and productivity.",
+    count: "100+ Tools"
   },
   {
-    icon: <Shield className="w-8 h-8" />,
-    title: "Enhanced Safety",
-    description: "Advanced safety measures and alignment improvements for more reliable interactions."
+    icon: <Wrench className="w-8 h-8" />,
+    title: "GPT-5 Resources",
+    description: "Essential resources, documentation, and references for GPT-5 developers and users.",
+    count: "300+ Resources"
   },
   {
-    icon: <MessageCircle className="w-8 h-8" />,
-    title: "Context Awareness",
-    description: "Longer context windows allowing for more coherent long-form conversations."
+    icon: <Star className="w-8 h-8" />,
+    title: "Expert Reviews",
+    description: "In-depth reviews and comparisons of GPT-5 tools, plugins, and applications.",
+    count: "Latest Reviews"
   },
   {
-    icon: <Cpu className="w-8 h-8" />,
-    title: "Specialized Models",
-    description: "Purpose-built variants optimized for coding, analysis, creative writing, and more."
+    icon: <TrendingUp className="w-8 h-8" />,
+    title: "GPT-5 News & Updates",
+    description: "Stay updated with the latest GPT-5 news, updates, and industry developments.",
+    count: "Daily Updates"
   }
 ];
 
-const usageSteps = [
+const featuredContent = [
   {
     step: "1",
-    title: "Sign Up",
-    description: "Create your OpenAI account or log in to your existing account"
+    title: "Browse Categories",
+    description: "Explore our organized categories of GPT-5 tutorials, plugins, tools, and resources"
   },
   {
-    step: "2", 
-    title: "Choose Your Plan",
-    description: "Select from Free, Plus, or Team plans based on your needs"
+    step: "2",
+    title: "Read Expert Reviews",
+    description: "Get insights from our detailed reviews and comparisons of GPT-5 tools and applications"
   },
   {
     step: "3",
-    title: "Start Chatting",
-    description: "Begin your conversation with GPT-5 and experience the next generation of AI"
+    title: "Stay Updated",
+    description: "Subscribe to our newsletter for the latest GPT-5 news, tutorials, and tool recommendations"
   }
 ];
 
 const faqs = [
   {
-    question: "What's new in GPT-5 compared to GPT-4?",
-    answer: "GPT-5 features significantly improved reasoning abilities, faster response times, enhanced safety measures, better multilingual support, and specialized model variants for different use cases."
+    question: "What makes GPT-5 Pro different from other GPT-5 resources?",
+    answer: "GPT-5 Pro is a comprehensive resource hub that curates the best GPT-5 tutorials, tools, plugins, and expert insights all in one place. We provide in-depth reviews, practical guides, and daily updates to help you maximize your GPT-5 experience."
   },
   {
-    question: "How can I access GPT-5?",
-    answer: "GPT-5 is available through the OpenAI website, mobile apps, and API. You can start with a free tier or upgrade to Plus/Team for enhanced features and priority access."
+    question: "How often do you update your GPT-5 content?",
+    answer: "We update our content daily with the latest GPT-5 news, new tool discoveries, fresh tutorials, and expert reviews. Our team continuously monitors the GPT-5 ecosystem to bring you the most current information."
   },
   {
-    question: "What are the usage limits for GPT-5?",
-    answer: "Usage limits vary by plan. Free users get limited messages per hour, Plus subscribers get higher limits, and Team/Enterprise users get the highest capacity with priority access."
+    question: "Are the GPT-5 tools and plugins you recommend free?",
+    answer: "We feature both free and premium GPT-5 tools and plugins. Each resource is clearly labeled with pricing information, and we provide detailed reviews to help you choose the best options for your needs and budget."
   },
   {
-    question: "Is GPT-5 available via API?",
-    answer: "Yes, GPT-5 is available through OpenAI's API with various pricing tiers. Developers can integrate GPT-5 into their applications with comprehensive documentation and support."
+    question: "Can I submit my own GPT-5 tool or tutorial for review?",
+    answer: "Yes! We welcome submissions from the GPT-5 community. You can contact us through our submission form to have your GPT-5 tools, plugins, or tutorials considered for inclusion in our directory."
   },
   {
-    question: "How does GPT-5 handle data privacy?",
-    answer: "OpenAI maintains strict data privacy standards. Conversations are not used to train models without explicit consent, and enterprise customers have additional privacy controls and compliance features."
+    question: "Do you provide GPT-5 tutorials for beginners?",
+    answer: "Absolutely! Our tutorial section includes comprehensive guides for all skill levels, from complete beginners to advanced users. We cover everything from basic GPT-5 usage to advanced prompt engineering and API integration."
   },
   {
-    question: "Can GPT-5 browse the internet?",
-    answer: "Yes, GPT-5 has enhanced web browsing capabilities when enabled, allowing it to access current information and provide up-to-date responses on recent events and developments."
+    question: "How can I stay updated with the latest GPT-5 developments?",
+    answer: "Subscribe to our newsletter to receive weekly updates with the latest GPT-5 news, new tool releases, tutorial highlights, and expert insights delivered directly to your inbox."
   }
 ];
 
@@ -94,10 +100,10 @@ function FAQ() {
           Get answers to common questions about GPT-5
         </p>
       </div>
-      
+
       <div className="space-y-4">
         {faqs.map((faq, index) => (
-          <div 
+          <div
             key={index}
             className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow duration-200"
           >
@@ -106,10 +112,9 @@ function FAQ() {
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
             >
               <span className="font-semibold text-lg">{faq.question}</span>
-              <ChevronDown 
-                className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${
-                  openIndex === index ? 'rotate-180' : ''
-                }`}
+              <ChevronDown
+                className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${openIndex === index ? 'rotate-180' : ''
+                  }`}
               />
             </button>
             {openIndex === index && (
@@ -132,19 +137,18 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              GPT-5
+              GPT-5 Pro
             </div>
             <div className="flex space-x-8">
-              <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">Features</a>
-              <a href="#usage" className="text-gray-600 hover:text-gray-900 transition-colors">How to Use</a>
-              <a href="#faq" className="text-gray-600 hover:text-gray-900 transition-colors">FAQ</a>
-              <a 
-                href="https://openai.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
+              <a href="#categories" className="text-gray-600 hover:text-gray-900 transition-colors">Categories</a>
+              <a href="#tutorials" className="text-gray-600 hover:text-gray-900 transition-colors">Tutorials</a>
+              <a href="#tools" className="text-gray-600 hover:text-gray-900 transition-colors">Tools</a>
+              <a href="#blog" className="text-gray-600 hover:text-gray-900 transition-colors">Blog</a>
+              <a
+                href="#newsletter"
                 className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:shadow-lg transition-all duration-200 transform hover:scale-105"
               >
-                Try GPT-5
+                Subscribe
               </a>
             </div>
           </div>
@@ -156,102 +160,101 @@ export default function Home() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="mb-8">
             <span className="inline-block bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-sm font-semibold px-4 py-2 rounded-full mb-4">
-              🚀 Now Available
+              🎯 Your Ultimate GPT-5 Resource Hub
             </span>
             <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent leading-tight">
-              Introducing GPT-5
+              GPT-5 Pro
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
-              The most advanced AI language model ever created. Experience unprecedented reasoning, creativity, 
-              and problem-solving capabilities that redefine what's possible with artificial intelligence.
+              Discover the best GPT-5 tutorials, plugins, SAAS tools, and expert insights. Your comprehensive guide
+              to mastering GPT-5 with curated resources and in-depth reviews.
             </p>
           </div>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-            <a 
-              href="https://chat.openai.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <a
+              href="#categories"
               className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
             >
-              Start Chatting Now
+              Explore Resources
               <ArrowRight className="w-5 h-5" />
             </a>
-            <a 
-              href="https://openai.com/api" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <a
+              href="#newsletter"
               className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-blue-400 hover:text-blue-600 transition-all duration-300"
             >
-              View API Docs
+              Subscribe to Updates
             </a>
           </div>
 
-          {/* Hero Visual */}
-          <div className="relative max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-blue-50 via-purple-50 to-blue-50 rounded-2xl p-8 shadow-xl">
-              <div className="bg-white rounded-xl p-6 shadow-lg">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
-                  <span className="font-semibold text-gray-700">GPT-5</span>
-                </div>
-                <p className="text-left text-gray-600 mb-4">
-                  Hello! I'm GPT-5, OpenAI's most advanced language model. I can help you with complex reasoning, 
-                  creative writing, coding, analysis, and much more. How can I assist you today?
-                </p>
-                <div className="flex items-center gap-2 text-sm text-gray-400">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  Online and ready to help
-                </div>
-              </div>
+          {/* Hero Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-600 mb-2">500+</div>
+              <div className="text-gray-600">GPT-5 Resources</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-purple-600 mb-2">50+</div>
+              <div className="text-gray-600">Expert Tutorials</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-600 mb-2">200+</div>
+              <div className="text-gray-600">Curated Tools</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-purple-600 mb-2">Daily</div>
+              <div className="text-gray-600">Fresh Content</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-20 px-6 bg-gray-50">
+      {/* Categories Section */}
+      <section id="categories" className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Breakthrough Capabilities
+              Explore GPT-5 Resources
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              GPT-5 pushes the boundaries of what AI can do with revolutionary improvements across all areas
+              Comprehensive collection of GPT-5 tutorials, tools, plugins, and expert insights all in one place
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div 
-                key={index} 
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+            {categories.map((category, index) => (
+              <div
+                key={index}
+                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 cursor-pointer"
               >
                 <div className="text-blue-600 mb-4">
-                  {feature.icon}
+                  {category.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                <h3 className="text-xl font-semibold mb-3 text-gray-900">{category.title}</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">{category.description}</p>
+                <div className="text-sm font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full inline-block">
+                  {category.count}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Usage Section */}
-      <section id="usage" className="py-20 px-6">
+      {/* How to Use Section */}
+      <section id="tutorials" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              How to Get Started
+              How to Use GPT-5 Pro
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Getting started with GPT-5 is simple and takes just a few minutes
+              Maximize your GPT-5 experience with our comprehensive resource platform
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {usageSteps.map((step, index) => (
+            {featuredContent.map((step, index) => (
               <div key={index} className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
                   {step.step}
@@ -263,17 +266,15 @@ export default function Home() {
           </div>
 
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4 text-gray-900">Ready to Experience GPT-5?</h3>
+            <h3 className="text-2xl font-bold mb-4 text-gray-900">Join Our GPT-5 Community</h3>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Join millions of users who are already using GPT-5 to enhance their productivity, creativity, and learning.
+              Get exclusive access to the latest GPT-5 tutorials, tool reviews, and expert insights delivered to your inbox.
             </p>
-            <a 
-              href="https://chat.openai.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <a
+              href="#newsletter"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
-              Get Started Free
+              Subscribe Now
               <ArrowRight className="w-5 h-5" />
             </a>
           </div>
@@ -291,39 +292,42 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-                GPT-5
+                GPT-5 Pro
               </div>
               <p className="text-gray-400">
-                The most advanced AI language model, pushing the boundaries of what's possible.
+                Your ultimate resource hub for GPT-5 tutorials, tools, plugins, and expert insights.
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Product</h4>
+              <h4 className="font-semibold mb-4">Categories</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">ChatGPT</a></li>
-                <li><a href="https://openai.com/api" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">API</a></li>
-                <li><a href="https://openai.com/pricing" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Pricing</a></li>
+                <li><a href="#tutorials" className="hover:text-white transition-colors">GPT-5 Tutorials</a></li>
+                <li><a href="#plugins" className="hover:text-white transition-colors">Plugins Directory</a></li>
+                <li><a href="#tools" className="hover:text-white transition-colors">SAAS Tools</a></li>
+                <li><a href="#reviews" className="hover:text-white transition-colors">Expert Reviews</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Resources</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="https://help.openai.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Help Center</a></li>
-                <li><a href="https://openai.com/blog" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Blog</a></li>
-                <li><a href="https://openai.com/research" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Research</a></li>
+                <li><a href="#blog" className="hover:text-white transition-colors">GPT-5 Blog</a></li>
+                <li><a href="#guides" className="hover:text-white transition-colors">Beginner Guides</a></li>
+                <li><a href="#news" className="hover:text-white transition-colors">Latest News</a></li>
+                <li><a href="#newsletter" className="hover:text-white transition-colors">Newsletter</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Company</h4>
+              <h4 className="font-semibold mb-4">Community</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="https://openai.com/about" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">About</a></li>
-                <li><a href="https://openai.com/careers" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Careers</a></li>
-                <li><a href="https://openai.com/safety" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Safety</a></li>
+                <li><a href="#submit" className="hover:text-white transition-colors">Submit Tool</a></li>
+                <li><a href="#contact" className="hover:text-white transition-colors">Contact Us</a></li>
+                <li><a href="#about" className="hover:text-white transition-colors">About GPT-5 Pro</a></li>
+                <li><a href="#privacy" className="hover:text-white transition-colors">Privacy Policy</a></li>
               </ul>
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 gpt5pro.org. This is a demonstration website showcasing GPT-5 capabilities.</p>
+            <p>&copy; 2025 GPT-5 Pro (gpt5pro.org). Your comprehensive guide to GPT-5 resources and tools.</p>
           </div>
         </div>
       </footer>
